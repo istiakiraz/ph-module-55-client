@@ -1,6 +1,13 @@
-import React from 'react';
+import React, { use } from 'react';
 
-const Users = () => {
+const Users = ({usersPromise}) => {
+
+    console.log(usersPromise);
+
+    const initUser = use()
+
+    // const initialUser = use(usersPromise)
+    // console.log(initialUser);
 
 
     const handleOnSub=(e)=>{
@@ -28,6 +35,11 @@ const Users = () => {
         .then(res=> res.json())
         .then(data => {
             console.log( 'add a new user', data);
+            if(data.insertedId){
+                alert('user add successfully')
+            }
+
+            e.target.reset()
         })
 
 
