@@ -1,4 +1,5 @@
 import React, { use, useState } from "react";
+import { Link } from "react-router";
 
 const Users = ({ usersPromise }) => {
   const initialUser = use(usersPromise);
@@ -116,7 +117,9 @@ const Users = ({ usersPromise }) => {
         <tr key={user._id}>
           <td className="border border-gray-300 px-4 py-2">{user.email}</td>
           <td className="border border-gray-300 px-4 py-2">{user.name}</td>
-          <td>
+          <td className="space-x-2">
+            <Link to={`user/${user._id}`} className="btn hover:bg-green-500 ">Details</Link>
+            <Link to={`update/${user._id}`} className="btn hover:bg-cyan-500 ">Edit</Link>
             <button onClick={()=>handleUserDelete(user._id) } className="btn hover:bg-red-500 ">X</button>
           </td>
         </tr>
